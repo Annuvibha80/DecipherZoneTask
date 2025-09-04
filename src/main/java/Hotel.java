@@ -1,48 +1,51 @@
 import java.util.ArrayList;
 
 public class Hotel {
+    private ArrayList<Room> rooms;           // list of all rooms
+    private ArrayList<Reservation> reservations;  // list of all reservations
 
-    ArrayList <Room> rooms = new ArrayList<>();
-    ArrayList<Reservation> reservations = new ArrayList<>();
-
-    // 1. Add a room
-    public void addRoom(Room r) { //r point to the same object as r1 in main class |Room r1 = new Room(101, "Single", 1500, true);|
-        rooms.add(r);
+    public Hotel() {
+        rooms = new ArrayList<>();
+        reservations = new ArrayList<>();
     }
 
+    // Add a new room to the hotel
+    public void addRoom(Room room) {
+        rooms.add(room);
+    }
 
-    // 2. Show available rooms
+    // Show all rooms that are available
     public void showAvailableRooms() {
-        for (Room room : rooms) {
-            if (room.isAvailable()) {
-                System.out.println("Room " + room.getRoomNumber() +
-                        " (" + room.getType() + ") - ₹" + room.getPrice());
+        for (Room r : rooms) {
+            if (r.isAvailable()) {
+                System.out.println("Room " + r.getRoomNumber() +
+                        " (" + r.getType() + ") - Rs." + r.getPrice());
             }
         }
     }
 
-
-    // 3. Make a reservation
-    public void makeReservation(String customerName, int roomNumber, String date) {
-        for (Room room : rooms) {
-            if (room.getRoomNumber() == roomNumber && room.isAvailable()) {
-                room.bookRoom(); // mark booked
-                Reservation res = new Reservation(customerName, roomNumber, date);
-                reservations.add(res);
-                System.out.println("Reservation confirmed for " + customerName);
+    // Make a reservation
+    public void makeReservation(String customerName, int roomNo, String date) {
+        for (Room r : rooms) {
+            if (r.getRoomNumber() == roomNo && r.isAvailable()) {
+                r.bookRoom();   // mark the room as booked
+                Reservation res = new Reservation(customerName, roomNo, date);
+                reservations.add(res); // store the reservation
+                System.out.println("Reservation created successfully!");
                 return;
             }
         }
-        System.out.println("Room not available!");
+        System.out.println("Room " + roomNo + " is not available!");
     }
 
-
-    // 4. Show all reservations
+    // Show all reservations
     public void showReservations() {
-        for (Reservation res : reservations) {
-            System.out.println(res);
+        if (reservations.isEmpty()) {
+            System.out.println("No reservations yet!");
+        } else {
+            for (Reservation res : reservations) {
+                System.out.println(res); // calls toString() in Reservation
+            }
         }
     }
 }
-
-

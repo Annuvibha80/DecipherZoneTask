@@ -24,11 +24,13 @@ public class Reservation {
 
 
     // To display reservation details
-    public void printReservation() {
-        System.out.println("Reservation [Customer: " + customerName +
+    @Override
+    public String toString() {
+        return "Reservation [Customer: " + customerName +
                 ", Room: " + roomNumber +
-                ", Date: " + date + "]");
+                ", Date: " + date + "]";
     }
+
 
 }
 

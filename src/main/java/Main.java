@@ -16,7 +16,6 @@ public class Main {
         hotel.addRoom(r3);
 
 
-
         int choice;
         do {
             System.out.println("\n==== Hotel Reservation System ====");
