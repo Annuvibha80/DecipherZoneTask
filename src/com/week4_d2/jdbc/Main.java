@@ -1,34 +1,40 @@
 package com.week4_d2.jdbc;
 
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.SQLException;
 
 public class Main {
-    public static void main(String[] args) throws SQLException {
-        //1 Database credentials
-        String url = "jdbc:mysql://localhost:3306/annuvibhadb";
-        String user = "root";
-        String password = "Mys@#8487";
+    // Database credentials
+    public static final String url = "jdbc:mysql://localhost:3306/annuvibhadb";
+    public static final String user = "root";
+    public static final String password = "Mys@#8487";
 
+    public static void main(String[] args) {
+        try {
+            DBConnection dbConn = new DBConnection();
+            Connection conn = dbConn.establishConnection();
 
-        //2 Establish connection
-        Connection conn = DriverManager.getConnection(url, user, password);
-        Statement stmt = conn.createStatement();
+            CreateTable createTable = new CreateTable();
+            createTable.createTableMethod(conn);
 
-        // 3. Create Table
-        String createTable = "CREATE TABLE IF NOT EXISTS Employee (id INT AUTO_INCREMENT PRIMARY KEY, name VARCHAR(100))";
-        stmt.executeUpdate(createTable);
+            InsertData insertData = new InsertData();
+            insertData.insertData(conn);
 
-        // 4. Insert Data
-        stmt.executeUpdate("INSERT INTO Employee (id, name) VALUES (1, 'Annuvibha')");
-        stmt.executeUpdate("INSERT INTO Employee (id, name) VALUES (2, 'Kajal')");
+            UpdateData updateData = new UpdateData();
+            updateData.updateTableData(conn, 1, "Anvi");
 
-        // 5. Select and Print
-        ResultSet rs = stmt.executeQuery("SELECT * FROM Employee");
-        while (rs.next()) {
-            System.out.println("ID: " + rs.getInt("id") + ", Name: " + rs.getString("name"));
+            ReadById read = new ReadById();
+            read.readById(conn, 1);
+
+            Delete delete = new Delete();
+            delete.deleteById(conn, 1);
+
+            ReadAll printTable = new ReadAll();
+            printTable.printTableData(conn);
+
+            conn.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
-
-
-
     }
 }
