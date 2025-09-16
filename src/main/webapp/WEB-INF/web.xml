@@ -5,6 +5,8 @@
 <web-app>
     <display-name>Archetype Created Web Application</display-name>
 
+
+
     <!-- Servlet Declaration -->
     <servlet>
         <servlet-name>first</servlet-name>
@@ -21,6 +23,19 @@
         <servlet-class>com.servlets.ThirdServlet</servlet-class>
     </servlet>
 
+    <servlet>
+        <servlet-name>MyForm</servlet-name>
+        <servlet-class>com.servlets.MyForm</servlet-class>
+    </servlet>
+
+    <servlet>
+        <servlet-name>SuccessServlet</servlet-name>
+        <servlet-class>com.servlets.SuccessServlet</servlet-class>
+    </servlet>
+
+
+
+
     <!-- Servlet Mapping -->
     <servlet-mapping>
         <servlet-name>first</servlet-name>
@@ -33,8 +48,14 @@
     </servlet-mapping>
 
     <servlet-mapping>
-        <servlet-name>Third</servlet-name>   <!-- FIXED: same as declaration -->
-        <url-pattern>/ThirdServlet</url-pattern>
+        <servlet-name>MyForm</servlet-name>
+        <url-pattern>/MyForm</url-pattern>
     </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>SuccessServlet</servlet-name>
+        <url-pattern>/SuccessServlet</url-pattern>
+    </servlet-mapping>
+
 
 </web-app>
