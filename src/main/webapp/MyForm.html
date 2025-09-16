@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>My Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+        }
+        .form-container {
+            width: 500px;
+            margin: 100px auto; /* centers the table form */
+            border: 1px solid #ccc;
+            padding: 20px;
+            background: #fff;
+            box-shadow: 0px 4px 8px rgba(0,0,0,0.1);
+        }
+        h2 {
+            text-align: center;
+        }
+        table {
+            width: 100%;
+        }
+        td {
+            padding: 8px;
+        }
+        .form-actions {
+            text-align: center;
+            padding-top: 10px;
+        }
+    </style>
+</head>
+
+
+<body>
+<div class="form-container">
+    <h2>My Form</h2>
+    <form action="MyForm" method="post" >
+        <table>
+            <tr>
+                <td>Enter your name:</td>
+                <td><input type="text" name="name" placeholder="Enter here" ></td>
+            </tr>
+            <tr>
+                <td>Enter your password:</td>
+                <td><input type="password" name="password" placeholder="Enter here" ></td>
+            </tr>
+            <tr>
+                <td>Enter your email:</td>
+                <td><input type="email" name="email" placeholder="Enter here" ></td>
+            </tr>
+            <tr>
+                <td>Select Gender:</td>
+                <td>
+                    <input type="radio" name="gender" value="Male"> Male
+                    <input type="radio" name="gender" value="Female"> Female
+                </td>
+            </tr>
+            <tr>
+                <td>Select your course:</td>
+                <td>
+                    <select name="course">
+                        <option>Java</option>
+                        <option>Python</option>
+                        <option>C++</option>
+                        <option>Web Development</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td><input type="checkbox"  value="checked" name="condition"> Agree terms and conditions</td>
+            </tr>
+        </table>
+
+        <div class="form-actions">
+            <input type="submit" value="Register">
+            <input type="reset" value="Reset">
+        </div>
+    </form>
+</div>
+
+</body>
+</html>
